@@ -6,21 +6,48 @@ public class InterestCalculator {
     private static void enterAndComputeSBamount(Scanner sc) {
         SBaccount sb = new SBaccount();
         System.out.println("Enter the Average SB amount ");
-        double amount = sc.nextDouble();
+        double amount = -1;
+        for (;;) {
+            if (!sc.hasNextDouble()) {
+                System.out.println("Enter only numbers : ");
+                sc.next(); // discard
+                continue;
+            }
+            amount = sc.nextDouble();
+            break;
+        }
         System.out.println("Interest gained is : $ " + sb.calculateInterest(amount));
     }
 
     private static void enterAndComputeFDaccount(Scanner sc) {
         FDaccount fd = new FDaccount();
         System.out.println("Enter the FD Amount");
-        double fAmount = sc.nextDouble();
+        double fAmount = -1;
+        for (;;) {
+            if (!sc.hasNextDouble()) {
+                System.out.println("Enter only numbers : ");
+                sc.next(); // discard
+                continue;
+            }
+            fAmount = sc.nextDouble();
+            break;
+        }
         System.out.println("Interest gained is: $ " + fd.calculateInterest(fAmount));
     }
 
     private static void enterAndComputeRDaccount(Scanner sc) {
         RDaccount rd = new RDaccount();
         System.out.println("Enter the RD amount");
-        double rAmount = sc.nextDouble();
+        double rAmount = -1;
+        for (;;) {
+            if (!sc.hasNextDouble()) {
+                System.out.println("Enter only numbers : ");
+                sc.next(); // discard
+                continue;
+            }
+            rAmount = sc.nextDouble();
+            break;
+        }
         System.out.println("Interest gained is: $ " + rd.calculateInterest(rAmount));
     }
 
