@@ -15,9 +15,27 @@ public class FDaccount extends Account{
         this.FDAmount = amount;
 
         System.out.println("Enter FD days");
-        noOfDays = FDScanner.nextInt();
+        for (;;) {
+            if (!FDScanner.hasNextInt()) {
+                System.out.println("Enter only numbers : ");
+                FDScanner.next(); // discard
+                continue;
+            }
+            noOfDays = FDScanner.nextInt();
+            break;
+        }
+
         System.out.println("Enter FD age holder ");
-        ageOfACHolder = FDScanner.nextInt();
+        for (;;) {
+            if (!FDScanner.hasNextInt()) {
+                System.out.println("Enter only numbers : ");
+                FDScanner.next(); // discard
+                continue;
+            }
+            ageOfACHolder = FDScanner.nextInt();
+            break;
+        }
+
         if (amount < 10000000) {
             if (noOfDays >= 7 && noOfDays <= 14) {
                 General = 0.0450;

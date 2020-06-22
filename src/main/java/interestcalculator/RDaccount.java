@@ -7,6 +7,7 @@ public class RDaccount extends Account {
     double RDInterestRate;
     double RDamount;
     int noOfMonths;
+    int age;
     double monthlyAmount;
     double General, SCitizen;
     Scanner RDScanner = new Scanner(System.in);
@@ -15,9 +16,26 @@ public class RDaccount extends Account {
     double calculateInterest(double Ramount){
         this.RDamount = Ramount;
         System.out.println("Enter RD months");
-        noOfMonths = RDScanner.nextInt();
+        for (;;) {
+            if (!RDScanner.hasNextInt()) {
+                System.out.println("Enter only numbers : ");
+                RDScanner.next(); // discard
+                continue;
+            }
+            noOfMonths = RDScanner.nextInt();
+            break;
+        }
+
         System.out.println("Enter RD holder age");
-        int age = RDScanner.nextInt();
+        for (;;) {
+            if (!RDScanner.hasNextInt()) {
+                System.out.println("Enter only numbers : ");
+                RDScanner.next(); // discard
+                continue;
+            }
+            age = RDScanner.nextInt();
+            break;
+        }
         if (noOfMonths >= 0 && noOfMonths <= 6) {
             General = .0750;
             SCitizen = 0.080;

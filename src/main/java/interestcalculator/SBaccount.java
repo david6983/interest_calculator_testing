@@ -6,12 +6,12 @@ import java.util.Scanner;
 class SBaccount extends Account {
     double SBamount , SbInterestRate, interest;
     Scanner SBScanner = new Scanner(System.in);
+    int accountChoice;
 
     @Override
     double calculateInterest(double amount){
         this.SBamount = amount;
         System.out.println("Select account type \n1. NRI \n2. Normal ");
-        int accountChoice = 0;
         for (;;) {
             if (!SBScanner.hasNextInt()) {
                 System.out.println("Enter only numbers : ");
