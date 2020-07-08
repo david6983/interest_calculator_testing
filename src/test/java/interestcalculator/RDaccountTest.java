@@ -7,14 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 @DisplayName("Test script for: RDaccount class")
 public class RDaccountTest {
@@ -22,21 +19,36 @@ public class RDaccountTest {
     private DecimalFormat df2;
 
     private ByteArrayInputStream testIn;
+    private ByteArrayOutputStream testOut;
+
+    private final PrintStream systemOut = System.out;
 
     private void provideInput(String data) {
         testIn = new ByteArrayInputStream(data.getBytes());
         rda.RDScanner = new Scanner(testIn);
     }
 
+    private void clearOutput() {
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
+    }
+
+    private String getOutput() {
+        return testOut.toString();
+    }
+
     @BeforeEach
     public void beforeEach() {
         rda = new RDaccount();
         df2 = new DecimalFormat("#.##");
+        testOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(testOut));
     }
 
     @AfterEach
     public void restoreSystemInputOutput() {
         rda.RDScanner = new Scanner(System.in);
+        System.setOut(systemOut);
     }
 
     @Test
@@ -112,5 +124,15 @@ public class RDaccountTest {
     public void TC_01_012() {
         provideInput("25\n80\n");
         assertEquals(df2.format(370), df2.format(rda.calculateInterest(4000)));
+    }
+
+    @Test
+    public void TC_01_013() {
+        provideInput("A\nG\n25\n80\n");
+        rda.calculateInterest(4000);
+        assertEquals("Enter RD months\n" +
+                "Enter only numbers : \n" +
+                "Enter only numbers : \n" +
+                "Enter RD holder age\n", getOutput());
     }
 }
