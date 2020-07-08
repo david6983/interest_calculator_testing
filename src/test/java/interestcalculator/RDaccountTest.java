@@ -128,11 +128,11 @@ public class RDaccountTest {
 
     @Test
     public void TC_01_013() {
-        provideInput("A\nG\n25\n80\n");
+        provideInput("A\n25\nG\n80\n");
         rda.calculateInterest(4000);
         assertEquals("Enter RD months\n" +
                 "Enter only numbers : \n" +
-                "Enter only numbers : \n" +
-                "Enter RD holder age\n", getOutput());
+                "Enter RD holder age\n" +
+                "Enter only numbers : \n", getOutput());
     }
 }
