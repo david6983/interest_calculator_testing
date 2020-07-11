@@ -10,7 +10,11 @@ public class RDaccount extends Account {
     int age;
     double monthlyAmount;
     double General, SCitizen;
-    Scanner RDScanner = new Scanner(System.in);
+    Scanner RDScanner;
+
+    public RDaccount(Scanner sc) {
+        RDScanner = sc;
+    }
 
     @Override
     double calculateInterest(double Ramount){

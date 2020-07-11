@@ -39,7 +39,7 @@ public class RDaccountTest {
 
     @BeforeEach
     public void beforeEach() {
-        rda = new RDaccount();
+        rda = new RDaccount(new Scanner(System.in));
         df2 = new DecimalFormat("#.##");
         testOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOut));

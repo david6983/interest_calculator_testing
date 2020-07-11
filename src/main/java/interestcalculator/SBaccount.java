@@ -5,8 +5,12 @@ import java.util.Scanner;
 
 class SBaccount extends Account {
     double SBamount , SbInterestRate, interest;
-    Scanner SBScanner = new Scanner(System.in);
+    Scanner SBScanner;
     int accountChoice;
+
+    public SBaccount(Scanner sc) {
+        SBScanner = sc;
+    }
 
     @Override
     double calculateInterest(double amount){

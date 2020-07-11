@@ -8,7 +8,11 @@ public class FDaccount extends Account{
     int noOfDays;
     int ageOfACHolder;
     double General, SCitizen;
-    Scanner FDScanner = new Scanner(System.in);
+    Scanner FDScanner;
+
+    public FDaccount(Scanner sc) {
+        FDScanner = sc;
+    }
 
     @Override
     double calculateInterest(double amount){
